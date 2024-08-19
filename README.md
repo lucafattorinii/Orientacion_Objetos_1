@@ -19,7 +19,7 @@ Este proyecto es un sistema de gestión para un consultorio médico. El sistema 
 ## Instalación y Ejecución
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/ConsultorioMedico.git
+    git clone https://github.com/tu-usuario/Consultorio.git
     ```
 2. Importa el proyecto en Eclipse:
     - Ve a `File` > `Import...` > `Existing Projects into Workspace`.
