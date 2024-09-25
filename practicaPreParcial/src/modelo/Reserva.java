@@ -44,7 +44,7 @@ public class Reserva {
     }
 
 	public void setCantComensales(int cantComensales) throws Exception {
-		if (cantComensales <= 0 || cantComensales > mesa.getCapacidad())throw new Exception("La cantidad de comensales debe ser mayor que 0");
+		if (validarComensales(cantComensales))throw new Exception("La cantidad de comensales debe ser mayor que 0");
 		this.cantComensales = cantComensales;
 
 	}
@@ -62,11 +62,11 @@ public class Reserva {
     }
     
    // 5. Validar Comensales (Validación en set de la clase)
- 	private boolean validarComensales(int cantComensales, Mesa mesa) throws Exception {
- 		if (cantComensales > mesa.getCapacidad()) {
- 			throw new Exception("La cantidad de comensales supera la capacidad de la mesa.");
- 		}
- 		return true;
+ 	private boolean validarComensales(int cantComensales) throws Exception {
+ 		
+ 			
+ 		
+ 		return cantComensales > mesa.getCapacidad() || cantComensales <= 0;
  	}
 
 
