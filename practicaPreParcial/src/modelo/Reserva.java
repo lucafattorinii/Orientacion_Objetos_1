@@ -15,12 +15,12 @@ public class Reserva {
 
 
  // Constructor que inicializa la lista y recibe parámetros
-    public Reserva(int idReserva, Cliente cliente, LocalDate fechaReserva, Mesa mesa, int cantComensales) {
+    public Reserva(int idReserva, Cliente cliente, LocalDate fechaReserva, Mesa mesa, int cantComensales) throws Exception {
         this.idReserva = idReserva;
         this.cliente = cliente;
         this.fechaReserva = fechaReserva;
         this.mesa = mesa;
-        this.cantComensales = cantComensales;
+        setCantComensales(cantComensales); // validacion 
         this.lstProdPedido = new ArrayList<>(); // Inicialización de la lista
     }
     public int getIdReserva() {
@@ -60,14 +60,14 @@ public class Reserva {
        
         return lstProdPedido.add(new ProdPedido(producto, precio));
     }
-
-     // 5. Validar Comensales (Validación en set de la clase)
-	private boolean validarComensales(int cantComensales, Mesa mesa) throws Exception {
-		if (cantComensales > mesa.getCapacidad()) {
-			throw new Exception("La cantidad de comensales supera la capacidad de la mesa.");
-		}
-		return true;
-	}
+    
+   // 5. Validar Comensales (Validación en set de la clase)
+ 	private boolean validarComensales(int cantComensales, Mesa mesa) throws Exception {
+ 		if (cantComensales > mesa.getCapacidad()) {
+ 			throw new Exception("La cantidad de comensales supera la capacidad de la mesa.");
+ 		}
+ 		return true;
+ 	}
 
 
 
