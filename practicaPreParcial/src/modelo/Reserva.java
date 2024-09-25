@@ -43,39 +43,20 @@ public class Reserva {
         return cantComensales;
     }
 
-    public void setCantComensales(int cantComensales) throws Exception {
-        if (cantComensales > 0) {
-            this.cantComensales = cantComensales;
-        } else {
-            throw new Exception("La cantidad de comensales debe ser mayor que 0");
-        }
-    }
+	public void setCantComensales(int cantComensales) throws Exception {
+		if (cantComensales <= 0 || cantComensales > mesa.getCapacidad())throw new Exception("La cantidad de comensales debe ser mayor que 0");
+		this.cantComensales = cantComensales;
+
+	}
 
     public List<ProdPedido> getLstProdPedido() {
         return lstProdPedido;
     }
     
-
-    public boolean agregarProdPedido(String prodPedido, double precio) throws Exception {
-        
-
-        // Comprobar si el producto ya existe en la lista
-        for (ProdPedido prod : lstProdPedido) {
-            if (prod.getProducto().equals(prodPedido)) {
-                throw new Exception("El producto " + prodPedido + " ya existe en la lista.");
-            }
-        }
-
-        // Crear y agregar el nuevo producto pedido
-        ProdPedido nuevoProdPedido = new ProdPedido(prodPedido, precio);
-        lstProdPedido.add(nuevoProdPedido);
-
-        return true;
-    }
     
     
     // Método para agregar un ProdPedido a una Reserva
-    public boolean agregarProdPedido(Reserva reserva, String producto, double precio) throws Exception {
+    public boolean agregarProdPedido(String producto, double precio) throws Exception {
        
         return lstProdPedido.add(new ProdPedido(producto, precio));
     }
