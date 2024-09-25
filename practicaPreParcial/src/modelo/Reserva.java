@@ -57,10 +57,7 @@ public class Reserva {
     
 
     public boolean agregarProdPedido(String prodPedido, double precio) throws Exception {
-        // Validar precio
-        if (precio <= 0) {
-            throw new Exception("El precio del producto debe ser mayor a 0.");
-        }
+        
 
         // Comprobar si el producto ya existe en la lista
         for (ProdPedido prod : lstProdPedido) {
@@ -79,9 +76,8 @@ public class Reserva {
     
     // Método para agregar un ProdPedido a una Reserva
     public boolean agregarProdPedido(Reserva reserva, String producto, double precio) throws Exception {
-        ProdPedido nuevoProdPedido = new ProdPedido(producto, precio);
-        reserva.getLstProdPedido().add(nuevoProdPedido);
-        return true;
+       
+        return lstProdPedido.add(new ProdPedido(producto, precio));
     }
 
 
@@ -103,17 +99,26 @@ public class Reserva {
     }
 
     // Redefinir equals para comparar Reservas
+
+
+    @Override
+	public int hashCode() {
+		return Objects.hash(cantComensales, cliente, fechaReserva, idReserva, lstProdPedido, mesa);
+	}
+    
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true; // Comparación de referencia
-        if (o == null || getClass() != o.getClass()) return false; // Verifica tipo y nulidad
-        Reserva reserva = (Reserva) o; // Cast seguro
-        return idReserva == reserva.idReserva; // Comparación de idReserva
+        boolean sonIguales = false; // Variable auxiliar para almacenar el resultado
+
+        if (this == o) {
+            sonIguales = true; // Comparación de referencia
+        } else if (o != null && getClass() == o.getClass()) {
+            Reserva reserva = (Reserva) o; // Cast seguro
+            sonIguales = idReserva == reserva.idReserva; // Comparación de idReserva
+        }
+
+        return sonIguales; 
     }
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idReserva);
-    }
 }
