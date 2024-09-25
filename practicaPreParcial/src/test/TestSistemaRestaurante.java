@@ -90,7 +90,7 @@ public class TestSistemaRestaurante {
         if (reserva1 != null) {
             boolean prodAgregado = false;
             try {
-                prodAgregado = reserva.agregarProdPedido(reserva1, "Pizza", 10.99);
+                prodAgregado = reserva.agregarProdPedido( "Pizza", 10.99);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -102,7 +102,7 @@ public class TestSistemaRestaurante {
         // CU 12: Devolver Total Reserva
         System.out.println("\nCU 12 ===============\n");
         if (reserva1 != null) {
-            double totalReserva = sistema.devolverTotalReserva(reserva1);
+            double totalReserva = reserva1.devolverTotalReserva();
             System.out.println("Total de la reserva: " + totalReserva);
         } else {
             System.out.println("No se encontró la reserva para calcular el total.");
