@@ -109,6 +109,10 @@ public class SistemaRestaurante {
 
     // 6. Traer Reserva por número de mesa y fecha (Búsqueda única con while)
     public Reserva traerReserva(int numeroMesa, LocalDate fechaReserva) {
+    	
+    	
+    	
+    	
         int i = 0;
         boolean encontrado = false;
         Reserva reserva = null;
@@ -124,14 +128,14 @@ public class SistemaRestaurante {
     }
     
 
+
     // 7. Agregar Reserva (ID calculado automáticamente)
     public boolean agregarReserva(Cliente cliente, LocalDate fecha, Mesa mesa, int cantComensales) throws Exception {
         if (traerReserva(mesa.getNumeroMesa(), fecha) != null) {
             throw new Exception("La mesa ya tiene una reserva para esa fecha.");
         }
 
-        validarComensales(cantComensales, mesa);
-
+       
         int id = lstReservas.isEmpty() ? 1 : lstReservas.get(lstReservas.size() - 1).getIdReserva() + 1;
         
         Reserva nuevaReserva = new Reserva(id, cliente, fecha, mesa, cantComensales);
@@ -162,17 +166,6 @@ public class SistemaRestaurante {
         return mesasLibres;
     }
   
-
-    // Método para calcular el total de una Reserva
-    public double devolverTotalReserva(Reserva reserva) {
-        double total = 0;
-        for (ProdPedido prodPedido : reserva.getLstProdPedido()) {
-            total += prodPedido.getPrecio();
-        }
-        return total;
-    }
-
-
     @Override
     public String toString() {
         return "SistemaRestaurante{" +
