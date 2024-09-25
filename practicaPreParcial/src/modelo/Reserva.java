@@ -61,6 +61,14 @@ public class Reserva {
         return lstProdPedido.add(new ProdPedido(producto, precio));
     }
 
+     // 5. Validar Comensales (Validación en set de la clase)
+	private boolean validarComensales(int cantComensales, Mesa mesa) throws Exception {
+		if (cantComensales > mesa.getCapacidad()) {
+			throw new Exception("La cantidad de comensales supera la capacidad de la mesa.");
+		}
+		return true;
+	}
+
 
 
     // Devolver Total de la Reserva
