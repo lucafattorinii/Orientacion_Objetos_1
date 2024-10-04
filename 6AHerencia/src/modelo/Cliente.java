@@ -41,17 +41,14 @@ public class Cliente extends Persona {
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) return false;
-        Cliente cliente = (Cliente) obj;
-        return cuit.equals(cliente.cuit);
+        return super.equals(obj) && obj instanceof Cliente && cuit.equals(((Cliente) obj).cuit);
     }
+
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "cuit='" + cuit + '\'' +
-                ", limiteCredito=" + limiteCredito +
-                "} " + super.toString();
+        return String.format("Cliente{cuit='%s', limiteCredito=%.2f} %s", cuit, limiteCredito, super.toString());
     }
+
 }
 
