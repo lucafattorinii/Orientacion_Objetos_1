@@ -42,16 +42,13 @@ public class Empleado extends Persona {
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) return false;
-        Empleado empleado = (Empleado) obj;
-        return legajo == empleado.legajo;
+        return super.equals(obj) && obj instanceof Empleado && legajo == ((Empleado) obj).legajo;
     }
+
 
     @Override
     public String toString() {
-        return "Empleado{" +
-                "legajo=" + legajo +
-                ", sueldoMensual=" + sueldoMensual +
-                "} " + super.toString();
+        return String.format("Empleado{legajo=%d, sueldoMensual=%.2f} %s", legajo, sueldoMensual, super.toString());
     }
+
 }
