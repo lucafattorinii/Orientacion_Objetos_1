@@ -60,19 +60,18 @@ public abstract class Persona {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Persona persona = (Persona) obj;
-        return dni == persona.dni;
+        return this == obj || (obj != null && getClass() == obj.getClass() && dni == ((Persona) obj).dni);
     }
+
 
     @Override
     public String toString() {
         return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni=" + dni +
-                ", fechaNacimiento=" + fechaNacimiento +
-                '}';
+               "nombre='" + nombre + '\'' +
+               ", apellido='" + apellido + '\'' +
+               ", dni=" + dni +
+               ", fechaNacimiento=" + fechaNacimiento +
+               '}';
     }
+
 }
