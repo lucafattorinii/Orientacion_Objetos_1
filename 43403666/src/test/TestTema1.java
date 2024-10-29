@@ -122,5 +122,18 @@ public class TestTema1 {
 			System.out.println(e.getMessage());
 		}
 
+		// faltaba testear
+		// Caso de uso 8: Traer ventas en un rango de fechas
+        	System.out.println("\n==============================\n");
+        	System.out.println("8) Traer ventas en un rango de fechas:");
+        	try {
+            		List<MovimientoInventario> ventas = sistema.traerVentas(LocalDate.of(2024, 10, 10), LocalDate.of(2024, 10, 13));
+            		for (MovimientoInventario venta : ventas) {
+                		System.out.println(venta);
+            		}
+        	} catch (Exception e) {
+           	 	System.out.println(e.getMessage());
+                }
+
 	}
 }
