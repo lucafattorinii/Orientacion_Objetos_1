@@ -159,7 +159,7 @@ public class Sistema {
 	}
 
 	// Caso de uso 9: traerVentasDeProductosRefrigerados
-	public List<MovimientoInventario> traerVentasDeProductosRefrigerados(LocalDate fecha) {
+	/*public List<MovimientoInventario> traerVentasDeProductosRefrigerados(LocalDate fecha) {
 	    List<MovimientoInventario> ventasRefrigeradas = new ArrayList<>();
 
 	    for (MovimientoInventario movimiento : lstMovimientoInventario) {
@@ -167,6 +167,20 @@ public class Sistema {
 	            && movimiento.getProducto() instanceof ProductoPerecedor 
 	            && ((ProductoPerecedor) movimiento.getProducto()).isRequiereRefrigeracion() 
 	            && movimiento.getCantidad() < 0) {
+	            ventasRefrigeradas.add(movimiento);
+	        }
+	    }
+
+	    return ventasRefrigeradas;
+	}*/
+
+	//corregido reutilizando el CU8
+	public List<MovimientoInventario> traerVentasDeProductosRefrigerados(LocalDate fecha) {
+	    List<MovimientoInventario> ventasRefrigeradas = new ArrayList<>();
+	    List<MovimientoInventario> ventas = traerVentas(fecha, fecha); // Reutiliza el CU 8
+
+	    for (MovimientoInventario movimiento : ventas) {
+	        if (movimiento.getProducto() instanceof ProductoPerecedor && ((ProductoPerecedor) movimiento.getProducto()).isRequiereRefrigeracion()) {
 	            ventasRefrigeradas.add(movimiento);
 	        }
 	    }
